@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  
+    <title>Rob's * Guide To sudo.js</title>
+    <link href="http://fonts.googleapis.com/css?family=Sunshiney" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/index.css" type="text/css" media="screen" charset="utf-8">
+  </head>
+  <body>
+    <div id="content">
+      <header>
+        <div class="h1">Rob's <div id='star'>*</div> Guide To sudo.js</div>
+        <nav>
+          <ul>
+            <li><a href="base"><img title="Base Class" alt="base class" src="img/settings.png"></img></a></li>
+            <li><a href="container"><img title="Container Class" alt="container class" src="img/shopping-cart.png"></img></a></li>
+            <li><a href="model"><img title="Model Class" alt="model class" src="img/disc.png"></img></a></li>
+            <li><a href="view"><img title="View Class" alt="view class" src="img/search.png"></img></a></li>
+          </ul>
+        </nav>
+      </header>
+      <section></section>
+    </div>
+    <!--begin the templates-->
+    <template id='index'>
+      <h2>About this non-book</h2>
+      <p>
+        Some funny things...
+      </p>
+      <p>
+        Some more funny things...
+      </p>
+    </template>
+    <template id="base">
+      <h2>The Base Class</h2>
+      <p>
+        Some very informative and insightful things about the Base Class Object.
+      </p>
+    </template>
+    <template id="container">
+      <h2>The Container Class</h2>
+      <p>
+        Some very informative and insightful things about the Base Class Object.
+      </p>
+    </template>
+    <template id="model">
+      <h2>The Model Class</h2>
+      <p>
+        Some very informative and insightful things about the Base Class Object.
+      </p>
+    </template>
+    <template id="view">
+      <h2>The View Class</h2>
+      <p>
+        Some very informative and insightful things about the Base Class Object.
+      </p>
+    </template>
+    <script src="js/lib/zepto/zepto-min.js"></script>
+    <script src="js/lib/sudo/sudo-min.js"></script>
+    <script src="js/model.js"></script>
+    <script src="js/section.js"></script>
+    <script src="js/index.js"></script>
+    <script src="js/routes.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      // a single global model will suffice
+      page.model = new lib.model();
+      page.navigator = new _.Navigator({root: '/'});
+      // make the navigator an observable
+      $.extend(page.navigator, _.extensions.observable);
+      page.navigator.start();
+      page.index = new lib.index('#content', page.model);
+    </script>
+  </body>
+</html>

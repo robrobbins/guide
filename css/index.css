@@ -1,0 +1,87 @@
+/*settle theme*/
+/*tang: #EA6045*/
+/*mustard: #F8CA4D*/
+/*lt slate: #3F5666*/
+/*beige: #F5E5C0*/
+/*dark slate #2F3440*/
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #3F5666;
+}
+
+#content {
+  padding-top: 20px;
+  width: 960px;
+  margin: 0 auto;
+}
+
+header .h1 {
+  width: 100%;
+  display: inline-block;
+  text-align: right;
+  font-size: 32px;
+  color: #F8CA4D;
+  text-shadow: 2px 2px #2F3440;
+}
+
+header #star {
+  display: inline-block;
+  text-align: center;
+  min-width: 20px;
+}
+
+nav {
+  margin-top: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #F5E5C0;
+}
+
+nav ul li a img {
+  width: 48px;
+  height: 48px;
+  margin-right: 10px;
+}
+
+/*nav ul li a img:hover {
+  box-shadow: 1px 1px #F5E5C0;
+}*/
+
+header .h1, section h2 {
+  font-family: 'Sunshiney';
+}
+
+section {
+  color: #121212;
+  box-shadow: 5px 5px 10px #2F3440;
+  background-color: #F5E5C0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+section h2 {
+  font-size: 28px;
+  color: #EA6045;
+  margin-bottom: 10px;
+}
+
+section p {
+  margin: 10px 0 0 10px;
+}
