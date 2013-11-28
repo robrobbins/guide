@@ -2,6 +2,7 @@ _.namespace('lib');
 
 lib.index = function(el, data) {
   this.construct(el, data);
+  this.initialize();
   // my section child will handle moving the template content
   // into the viewport
   this.addChild(new lib.section(this.$('section')), 'section');
@@ -17,7 +18,7 @@ lib.index.prototype = $.extend(_.View.prototype, {
     this.getChild('section').setSection(page.routes[change.name]);
   },
 
-  init: function init() {
+  initialize: function initialize() {
     // keep a ref to the *
     this.$tar = this.$('header #star');
     // delegate the clicks on the nav items

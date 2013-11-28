@@ -432,7 +432,7 @@ sudo.Container.prototype.getChild = function getChild(id) {
 };
 // ###_indexChildren_
 // Method is called with the `index` property of a subview that is being removed.
-// Beginning at <i> decrement subview indices.
+// Beginning at `i` decrement subview indices.
 // `param` {Number} `i`
 // `private`
 sudo.Container.prototype._indexChildren_ = function _indexChildren_(i) {
@@ -567,7 +567,6 @@ sudo.View = function(el, data) {
       this.model = new sudo.Model(data);
   } 
   this.setEl(el);
-  if(this.role === 'view') this.init();
 };
 // View inherits from Container
 // `private`
@@ -589,20 +588,18 @@ sudo.View.prototype.becomePremier = function becomePremier() {
   } else f(); // no existing premier
   return this;
 };
-// ###init
-// A 'contruction-time' hook to call for further initialization needs in 
-// View objects (and their subclasses). A noop by default child classes should override.
-sudo.View.prototype.init = $.noop;
 // the el needs to be normalized before use
 // `private`
 sudo.View.prototype._normalizedEl_ = function _normalizedEl_(el) {
-  if(typeof el === 'string') {
-    return $(el);
-  } else {
-    // Passed an already `querified` Element?
-    // It will have a length of 1 if so.
-    return el.length ? el : $(el);
-  }	
+  // Passed an already `querified` Element?
+  // It will have a length of 1 if so.
+  if(typeof el !== 'string' && el.length) return el;
+  // string or DOM node
+  var _el = $(el);
+  // if there is not a top level query returned the desired node may be 
+  // in a document fragment not in the DOM yet. We will check the parent's $el
+  // if available, or return the empty query
+  return _el.length ? _el : (this.parent ? this.parent.$(el) : _el);
 };
 // ### resignPremier
 // Resign premier status
@@ -732,7 +729,7 @@ sudo.unescape = function unescape(str) {
 // `param` {string} `scope`. Optional context name of your `data object`, set to 'data' if falsy.
 sudo.template = function template(str, data, scope) {
   scope || (scope = 'data');
-  var settings = sudo.templateSettings, render, template,
+  var settings = sudo.templateSettings, render, tmpl,
   // Compile the template source, taking care to escape characters that
   // cannot be included in a string literal and then unescape them in code blocks.
   source = "_p+='" + str.replace(sudo.escaper, function(match) {
@@ -747,12 +744,12 @@ sudo.template = function template(str, data, scope) {
   source = "var _t,_p='';" + source + "return _p;\n";
   render = new Function(scope, source);
   if (data) return render(data);
-  template = function(data) {
+  tmpl = function(data) {
     return render.call(this, data);
   };
   // Provide the compiled function source as a convenience for reflection/compilation
-  template.source = 'function(' + scope + '){\n' + source + '}';
-  return template;
+  tmpl.source = 'function(' + scope + '){\n' + source + '}';
+  return tmpl;
 };
 // ##DataView Class Object
 
@@ -772,13 +769,12 @@ sudo.DataView = function(el, data) {
   sudo.View.call(this, el, data);
   // implements the listener extension
   $.extend(this, sudo.extensions.listener);
+  // dont autoRender on the setting of events,
+  this.autoRenderBlacklist = {event: true, events: true};
+  // autoRender types observe their own model
   if(this.model.data.autoRender) {
-    // dont autoRender on the setting of events,
-    this.autoRenderBlacklist = {event: true, events: true};
-    // autoRender types observe their own model
     if(!this.model.observe) $.extend(this.model, sudo.extensions.observable);
   }
-  if(this.role === 'dataview') this.init();
 };
 // `private`
 sudo.inherit(sudo.View, sudo.DataView);
@@ -1611,8 +1607,7 @@ sudo.delegates.Data.prototype.filter = function(obj) {
 // `private`
 sudo.delegates.Data.prototype.role = 'data';
 
-sudo.version = "0.9.6";
+sudo.version = "0.9.7";
 window.sudo = sudo;
 if(typeof window._ === "undefined") window._ = sudo;
 }).call(this, this);
-

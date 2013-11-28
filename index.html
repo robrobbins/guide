@@ -6,6 +6,35 @@
     <title>Rob's * Guide To sudo.js</title>
     <link href="http://fonts.googleapis.com/css?family=Sunshiney" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/index.css" type="text/css" media="screen" charset="utf-8">
+    <script type="text/javascript" charset="utf-8">
+    
+    (function templatePolyfill(d) {
+    	if('content' in d.createElement('template')) {
+    		return false;
+    	}
+
+    	var qPlates = d.getElementsByTagName('template'),
+    		plateLen = qPlates.length,
+    		elPlate,
+    		qContent,
+    		contentLen,
+    		docContent;
+
+    	for(var x=0; x<plateLen; ++x) {
+    		elPlate = qPlates[x];
+    		qContent = elPlate.childNodes;
+    		contentLen = qContent.length;
+    		docContent = d.createDocumentFragment();
+
+    		while(qContent[0]) {
+    			docContent.appendChild(qContent[0]);
+    		}
+
+    		elPlate.content = docContent;
+    	}
+    })(document);
+    
+    </script>
   </head>
   <body>
     <div id="content">
@@ -23,7 +52,7 @@
       <section></section>
     </div>
     <!--begin the templates-->
-    <template id='index'>
+    <template id='index' class='template'>
       <h2>About this non-book</h2>
       <p>
         Some funny things...
@@ -32,25 +61,25 @@
         Some more funny things...
       </p>
     </template>
-    <template id="base">
+    <template id="base" class='template'>
       <h2>The Base Class</h2>
       <p>
         Some very informative and insightful things about the Base Class Object.
       </p>
     </template>
-    <template id="container">
+    <template id="container" class='template'>
       <h2>The Container Class</h2>
       <p>
         Some very informative and insightful things about the Base Class Object.
       </p>
     </template>
-    <template id="model">
+    <template id="model" class='template'>
       <h2>The Model Class</h2>
       <p>
         Some very informative and insightful things about the Base Class Object.
       </p>
     </template>
-    <template id="view">
+    <template id="view" class='template'>
       <h2>The View Class</h2>
       <p>
         Some very informative and insightful things about the Base Class Object.
