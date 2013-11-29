@@ -729,7 +729,7 @@ sudo.unescape = function unescape(str) {
 // `param` {string} `scope`. Optional context name of your `data object`, set to 'data' if falsy.
 sudo.template = function template(str, data, scope) {
   scope || (scope = 'data');
-  var settings = sudo.templateSettings, render, tmpl,
+  var settings = sudo.templateSettings, render, template,
   // Compile the template source, taking care to escape characters that
   // cannot be included in a string literal and then unescape them in code blocks.
   source = "_p+='" + str.replace(sudo.escaper, function(match) {
@@ -744,12 +744,12 @@ sudo.template = function template(str, data, scope) {
   source = "var _t,_p='';" + source + "return _p;\n";
   render = new Function(scope, source);
   if (data) return render(data);
-  tmpl = function(data) {
+  template = function(data) {
     return render.call(this, data);
   };
   // Provide the compiled function source as a convenience for reflection/compilation
-  tmpl.source = 'function(' + scope + '){\n' + source + '}';
-  return tmpl;
+  template.source = 'function(' + scope + '){\n' + source + '}';
+  return template;
 };
 // ##DataView Class Object
 
@@ -1272,8 +1272,8 @@ sudo.extensions.observable = {
   unsets: function unsets(ary, hold) {
     var i;
     for(i = 0; i < ary.length; i++) {
-      ary[i].indexOf('.') === -1 ? this.unset(k[i], true) :
-        this.unsetPath(k[i], true);
+      ary[i].indexOf('.') === -1 ? this.unset(ary[i], true) :
+        this.unsetPath(ary[i], true);
     }
     if(hold) return this;
     return this.deliverChangeRecords();	
