@@ -7,7 +7,7 @@ lib.index = function(el, data) {
   // into the viewport
   this.addChild(new lib.section(this.$('section')), 'section');
   // we start from the index
-  this.getChild('section').setSection('#index');
+  // this.getChild('section').setSection('#index');
   // observe the nav changes at the navigator
   page.navigator.observe(this.handleNav.bind(this));
 };
@@ -15,7 +15,7 @@ lib.index = function(el, data) {
 lib.index.prototype = $.extend(_.View.prototype, {
   handleNav: function handleNav(change) {
     // we use the routes to determine the template to clone
-    this.getChild('section').setSection(page.routes[change.name]);
+    this.getChild('section').getMarkup(page.routes[change.name]);
   },
 
   initialize: function initialize() {

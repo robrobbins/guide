@@ -1,0 +1,74 @@
+<h2>Your moms a Base</h2>
+<p>
+  Or is it your <code>Base</code> is a mom? Hmm. See all other Class Objects in Sudo.js inherit
+  from Base. So even as <code>sudo.Model</code> and <code>sudo.View</code> are 
+  out there getting all of the instatiations, <code>Base</code> is selflessly contributing
+  itself to their success. Loving, over-dramatic and passive-aggressive, my dear old Base.
+</p>
+<h2>Sugar For Them What Dislike Sugar</h2>
+<p>
+  I try to keep away from it generally, as a result so does our friend Sudo.js. You should
+  generally just learn how to do things, not learn to do other things that do those things.
+  Man that's some poignant shit, let's put that in a blockquote.
+</p>
+<blockquote>
+  " You should generally just learn how to do things, not learn to do other things that do those things. "
+</blockquote>
+<p>
+  You know, use standards. We have those now. Want to iterate over an object? Sudo.js says
+  "Use <code>Object.keys.forEach</code>". Need to call the <code>contstructor</code>
+  method on the <code>prototype</code> chain of the Class Object you inherited from? 
+  Sudo.js says "I don't always use syntactic sugar, but when I do I prefer 
+  <code>construct</code>."
+  <pre>
+    var starMonkey = function() {
+      this.construct()
+    };
+    
+    // the construct method is inherited from the sudo.Base class
+    starMonkey.prototype = Object.create(sudo.Base.prototype);
+  </pre>
+  That saves you exactly <b>a bunch</b> of characters over the socaially awkward invocation 
+  "<code>Object.getPrototypeOf(this).constructor.apply(this, arguments || []);</code>."
+</p>
+<h2>Brendan Eich Didn't Like Comic Books?</h2>
+<p>
+  I like calling <code>super</code> in other laguages, it's useful and ridiculously named.
+  Super? Really? That's amazing. We can't call it, it's not implemented. That makes me sad.
+  Not only that, I can't implement it for you with that name becouse of <b>really dumb</b>
+  reserved word policies. <i>Sigh</i>. Well, gotta play in the band you are dealt right?
+  <pre>
+    insertKeysIntoApple: function(keys) {
+      this.attachWithRubberBand();
+      
+      this.base('insertKeysIntoApple', keys);
+    };
+  </pre> 
+  Above we are assuming you have a Class Object that inherited the <code>insertKeysIntoApple</code>
+  method from another Class Object and that in the former you want to <code>attachWithRubberBand</code> before
+  performing the "superesque" call to the method of the same name on the latter.
+</p>
+<h3>A note about annoyance</h3>
+<p>
+  It annoys me to have to make you send the name of the "target" method as the first argument with 
+  <code>base</code>. If all the Javascript runtimes had implemented N.F.Es properly you wouldn't have
+  too, but they didn't, so you do, and I am.
+</p>
+<h2>I Would Be More Into Your Code If It Was My Code</h2>
+<p>
+  Don't deny it, we all feel this way. We're all "I don't want to do it. I want you to do it, but
+  you should do it exactly like I would do it while you are doing it." I'm not entirely sure why
+  <code>sudo.delegate</code> Class Objects remind me of this <b>universal developer truth</b> but
+  they do.
+  <pre>
+    insertKeysIntoApple: function(keys) {
+      this.delegate('attacherizr').attachWithRubberBand();
+      
+      this.base('insertKeysIntoApple', keys);
+    };
+  </pre>
+  So I am imagining that the <code>attachWithRubberBand</code> method turned out to be
+  <i>seriously fucking complex</i> and needed to be moved into an object all of its own so
+  that all that science (What kind of rubber band? Is it a big cup or a little one?)
+  could be encapsulated in one spot.
+</p>

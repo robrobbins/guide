@@ -14,6 +14,31 @@ body {
   background-color: #3F5666;
 }
 
+blockquote {
+  width: 75%;
+  color: #3F5666;
+  margin: 10px auto;
+  padding: 15px;
+  font-size: 25px;
+  text-align: center;
+}
+
+code {
+  font-size: 15px;
+}
+
+pre {
+  width: 75%;
+  margin: 15px auto;
+  font-size: 13px;
+  background-color: #3F5666;
+  border: 1px solid #F7EFDC;
+  color: #F8CA4D;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: inset 0 0 10px #2F3440;
+}
+
 #content {
   padding-top: 20px;
   width: 960px;
@@ -64,7 +89,7 @@ nav ul li a img {
   box-shadow: 1px 1px #F5E5C0;
 }*/
 
-header .h1, section h2 {
+header .h1, section h2, section h3, blockquote {
   font-family: 'Sunshiney';
 }
 
@@ -79,7 +104,13 @@ section {
 section h2 {
   font-size: 28px;
   color: #EA6045;
-  margin-bottom: 10px;
+  margin: 10px 0;
+}
+
+section h3 {
+  font-size: 22px;
+  color: #EA6045;
+  margin: 15px 0;
 }
 
 section p {
