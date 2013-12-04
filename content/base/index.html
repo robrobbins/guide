@@ -68,7 +68,22 @@
     };
   </pre>
   So I am imagining that the <code>attachWithRubberBand</code> method turned out to be
-  <i>seriously fucking complex</i> and needed to be moved into an object all of its own so
-  that all that science (What kind of rubber band? Is it a big cup or a little one?)
+  <i>seriously fucking complex</i> and needed to be moved into an object of its own so
+  all that science (What kind of rubber band? Is it a big cup or a little one?)
   could be encapsulated in one spot.
+</p>
+<h3>Enviromentally Sound</h3>
+<p> 
+  Delegates promote reuse, like a recyle bin, except they are way less complicated regarding
+  their use. There are no restrictions based on the plasticity rating or color of glass, just
+  instantiate and call, then stuff happens. Other objects may wish to share in this feel-good story. Let them,
+  it's good for us all.
+</p>
+<h3>Other Advantageousness</h3>
+<p>
+  You may be wondering, "What's for lunch?", or "What's the need to use a delegate when I can just
+  'mixin' useful stuff to my Class Object via <code>extend</code> (maybe even using <code>sudo.extensions</code>)?" Well, 
+  I'll tell you. It's sushi rolls and primarily because <code>sudo.Delegate</code> Class Objects have
+  their own constructors whereas mixin type objects do not. Yep, in the game where you have to have your own
+  constructor to score points, it's <code>Delegates</code> 1, composite types 0.
 </p>

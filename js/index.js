@@ -10,9 +10,16 @@ lib.index = function(el, data) {
   // this.getChild('section').setSection('#index');
   // observe the nav changes at the navigator
   page.navigator.observe(this.handleNav.bind(this));
+  // if we have been refreshed on a 'non-index'
+  this.checkUrl();
 };
 
 lib.index.prototype = $.extend(_.View.prototype, {
+  checkUrl: function checkUrl() {
+    if(page.navigator.get('fragment') !== page.navigator.get('root')) {
+      this.getChild('section').getMarkup(page.routes[page.navigator.get('fragment')]);
+    }
+  },
   handleNav: function handleNav(change) {
     // we use the routes to determine the template to clone
     this.getChild('section').getMarkup(page.routes[change.name]);

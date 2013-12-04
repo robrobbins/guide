@@ -49,15 +49,7 @@
           </ul>
         </nav>
       </header>
-      <section>
-        <h2>About this non-book</h2>
-        <p>
-          Some funny things...
-        </p>
-        <p>
-          Some more funny things...
-        </p>
-      </section>
+      <section><p>Loading the shiz...</p></section>
     </div>
     <script src="js/lib/zepto/zepto-min.js"></script>
     <script src="js/lib/sudo/sudo-min.js"></script>
@@ -68,7 +60,7 @@
     <script type="text/javascript" charset="utf-8">
       // a single global model will suffice
       page.model = new lib.model();
-      page.navigator = new _.Navigator({root: '/'});
+      page.navigator = new _.Navigator({root: '/', useHashChange: true});
       // make the navigator an observable
       $.extend(page.navigator, _.extensions.observable);
       page.navigator.start();
