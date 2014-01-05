@@ -6,35 +6,6 @@
     <title>Rob's * Guide To sudo.js</title>
     <link href="http://fonts.googleapis.com/css?family=Sunshiney" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="css/index.css" type="text/css" media="screen" charset="utf-8">
-    <script type="text/javascript" charset="utf-8">
-    
-    (function templatePolyfill(d) {
-    	if('content' in d.createElement('template')) {
-    		return false;
-    	}
-
-    	var qPlates = d.getElementsByTagName('template'),
-    		plateLen = qPlates.length,
-    		elPlate,
-    		qContent,
-    		contentLen,
-    		docContent;
-
-    	for(var x=0; x<plateLen; ++x) {
-    		elPlate = qPlates[x];
-    		qContent = elPlate.childNodes;
-    		contentLen = qContent.length;
-    		docContent = d.createDocumentFragment();
-
-    		while(qContent[0]) {
-    			docContent.appendChild(qContent[0]);
-    		}
-
-    		elPlate.content = docContent;
-    	}
-    })(document);
-    
-    </script>
   </head>
   <body>
     <div id="content">
@@ -51,8 +22,7 @@
       </header>
       <section><p>Loading the shiz...</p></section>
     </div>
-    <script src="js/lib/zepto/zepto-min.js"></script>
-    <script src="js/lib/sudo/sudo-min.js"></script>
+    <script src="js/lib/sudo/sudo.js"></script>
     <script src="js/model.js"></script>
     <script src="js/section.js"></script>
     <script src="js/index.js"></script>
@@ -62,7 +32,7 @@
       page.model = new lib.model();
       page.navigator = new _.Navigator({root: '/', useHashChange: true});
       // make the navigator an observable
-      $.extend(page.navigator, _.extensions.observable);
+      _.extend(page.navigator, _.extensions.observable);
       page.navigator.start();
       page.index = new lib.index('#content', page.model);
     </script>

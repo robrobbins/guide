@@ -57,7 +57,50 @@ header .h1 {
 header #star {
   display: inline-block;
   text-align: center;
-  min-width: 20px;
+  width: 20px;
+  transition: all 1s ease-in-out;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+}
+
+.see-thru {
+  opacity: 0;
+}
+
+.wider-50 {
+  width: 50px !important;
+}
+.wider-75 {
+  width: 75px !important;
+}
+.wider-100 {
+  width: 100px !important;
+}
+.wider-125 {
+  width: 125px !important;
+}
+.wider-150 {
+  width: 150px !important;
+}
+.wider-175 {
+  width: 175px !important;
+}
+.wider-200 {
+  width: 200px !important;
+}
+.wider-225 {
+  width: 225px !important;
+}
+.wider-250 {
+  width: 250px !important;
+}
+
+.skewed {
+  -moz-transform: rotate(-10deg);
+  -webkit-transform: rotate(-10deg);
+  -o-transform: rotate(-10deg);
+  transform: rotate(-10deg);
 }
 
 nav {
